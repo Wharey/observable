@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<div id="myplot"></div>
-<script type="module">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Observable Chart</title>
+</head>
+<body>
 
-import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+  <h1>My Observable Plot</h1>
 
-const plot = Plot.rectY({length: 10000}, Plot.binX({y: "count"}, {x: Math.random})).plot();
-const div = document.querySelector("#myplot");
-div.append(plot);
+  <!-- Container where the Observable plot will be displayed -->
+  <div id="observable-chart"></div>
 
-</script>
+  <script type="module">
+    import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+    import notebook from "https://api.observablehq.com/d/d51b9e3050706f9c.js?version=latest"; // Link to your Observable notebook
+
+    // Create a runtime and load the Observable notebook
+    const runtime = new Runtime();
+    const main = runtime.module(notebook, name => {
+      // Target only the "chart" cell from Observable
+      if (name === "chart") {
+        return new Inspector(document.getElementById("observable-chart"));
+      }
+    });
+  </script>
+
+</body>
+</html>
