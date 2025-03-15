@@ -1,37 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Observable Plot</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
-  <script type="module">
-    import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-    import notebook from "https://api.observablehq.com/d/d51b9e3050706f9c.js?version=latest"; // Link to your Observable notebook
+<div id="myplot"></div>
+<script type="module">
 
-    const runtime = new Runtime();
-    const main = runtime.module(notebook, name => {
-      // Target the chart cell from the Observable notebook
-      if (name === "chart") {  // Replace "chart" with the actual name of the chart cell
-        return new Inspector(document.getElementById("observable-chart"));
-      }
-    });
-  </script>
-</head>
-<body>
+import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
 
-  <header>
-    <h1>My Observable Plot</h1>
-  </header>
+const plot = Plot.rectY({length: 10000}, Plot.binX({y: "count"}, {x: Math.random})).plot();
+const div = document.querySelector("#myplot");
+div.append(plot);
 
-  <div class="content">
-    <p>This is a plot embedded from Observable.</p>
-    <div id="observable-chart"></div> <!-- Container for the chart -->
-  </div>
-
-  <footer>
-    <p>&copy; 2025 My Observable Plot</p>
-  </footer>
-
-</body>
-</html>
+</script>
