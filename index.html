@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Observable Chart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatmap and Iframe</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Iframe Embed -->
+    <div id="iframe-container">
+      <iframe width="100%" height="500" frameborder="0"
+      src="https://observablehq.com/embed/d51b9e3050706f9c@1785?cell=*"></iframe>
+    </div> 
 
-  <h1>My Observable Plot</h1>
-
-    <!-- Container where the chart will be inserted -->
-  <div id="observable-chart"></div>
-
-  <script type="module">
-    import { createChart } from "./chart.js"; // Import chart function
-    createChart("observable-chart"); // Create and insert chart
-  </script>
-
-  <!-- Embed Observable chart using iframe -->
-  <iframe width="100%" height="400" frameborder="0"
-    src="https://observablehq.com/embed/d51b9e3050706f9c@1371?cells=chart">
-  </iframe>
-
+    <!-- Link to the external JavaScript files -->
+    <script src="energyComparison.js"></script> <!-- Include the energy comparison JavaScript file -->
 </body>
 </html>
